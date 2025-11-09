@@ -110,9 +110,9 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
                         </button>
                         <div id="productsSubmenu" class="ml-8 space-y-1 submenu-transition hidden">
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">New Product</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">All Products</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">Available Stock</a>
+                            <a href="{{ route('products.create') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">New Product</a>
+                            <a href="{{ route('products.index') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">All Products</a>
+                            <a href="{{ route('products.available-stock') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">Available Stock</a>
                         </div>
                     </div>
 
@@ -126,9 +126,10 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
                         </button>
                         <div id="ordersSubmenu" class="ml-8 space-y-1 submenu-transition hidden">
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">New Order</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">All Orders</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">Pending Orders</a>
+                            <a href="{{ route('orders.create') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">New Order</a>
+                            <a href="{{ route('orders.index') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">All Orders</a>
+                            <a href="{{ route('orders.pending') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">Pending Orders</a>
+                             <a href="{{ route('orders.delivered') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">Delivered Orders</a>
                         </div>
                     </div>
 
@@ -142,8 +143,8 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
                         </button>
                         <div id="salesSubmenu" class="ml-8 space-y-1 submenu-transition hidden">
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">New Invoice</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">Invoices List</a>
+                            <a href="{{ route('sales.create') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">New Invoice</a>
+                            <a href="{{ route('sales.index') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">Invoices List</a>
                         </div>
                     </div>
 
@@ -157,8 +158,8 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
                         </button>
                         <div id="customersSubmenu" class="ml-8 space-y-1 submenu-transition hidden">
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">New Customer</a>
-                            <a href="#" class="block p-2 rounded hover:bg-gray-700 text-sm">Customers List</a>
+                            <a href="{{ route('customers.create') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">New Customer</a>
+                            <a href="{{ route('customers.index') }}" class="block p-2 rounded hover:bg-gray-700 text-sm">Customers List</a>
                         </div>
                     </div>
                 </nav>

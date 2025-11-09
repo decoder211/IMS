@@ -19,13 +19,13 @@
 
     <!-- Statistics Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Stock Card -->
+        <!-- Total Stock Card -->
         <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg text-white overflow-hidden card-hover">
             <div class="p-6">
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-blue-100 text-sm font-medium">Total Stock</p>
-                        <p class="text-3xl font-bold mt-1">1,248</p>
+                        <p class="text-3xl font-bold mt-1">{{ number_format($totalStock) }}</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
                         <i class="fas fa-boxes text-xl"></i>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="bg-blue-700 px-6 py-3">
-                <a href="#" class="flex justify-between items-center text-white hover:text-blue-200 text-sm font-medium">
+                <a href="{{ route('products.index') }}" class="flex justify-between items-center text-white hover:text-blue-200 text-sm font-medium">
                     <span>View Details</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -46,7 +46,7 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-green-100 text-sm font-medium">Sold Products</p>
-                        <p class="text-3xl font-bold mt-1">892</p>
+                        <p class="text-3xl font-bold mt-1">{{ number_format($soldProducts) }}</p>
                     </div>
                     <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
                         <i class="fas fa-chart-line text-xl"></i>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="bg-green-700 px-6 py-3">
-                <a href="#" class="flex justify-between items-center text-white hover:text-green-200 text-sm font-medium">
+                <a href="{{ route('sales.index') }}" class="flex justify-between items-center text-white hover:text-green-200 text-sm font-medium">
                     <span>View Details</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -67,7 +67,7 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-yellow-100 text-sm font-medium">Available Products</p>
-                        <p class="text-3xl font-bold mt-1">356</p>
+                        <p class="text-3xl font-bold mt-1">{{ number_format($availableProducts) }}</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
                         <i class="fas fa-box-open text-xl"></i>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="bg-yellow-700 px-6 py-3">
-                <a href="#" class="flex justify-between items-center text-white hover:text-yellow-200 text-sm font-medium">
+                <a href="{{ route('products.available-stock') }}" class="flex justify-between items-center text-white hover:text-yellow-200 text-sm font-medium">
                     <span>View Details</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -83,20 +83,20 @@
         </div>
 
         <!-- Pending Orders Card -->
-        <div class="bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl shadow-lg text-white overflow-hidden card-hover">
+        <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg text-white overflow-hidden card-hover">
             <div class="p-6">
                 <div class="flex justify-between items-center">
                     <div>
-                        <p class="text-gray-300 text-sm font-medium">Pending Orders</p>
-                        <p class="text-3xl font-bold mt-1">23</p>
+                        <p class="text-orange-100 text-sm font-medium">Pending Orders</p>
+                        <p class="text-3xl font-bold mt-1">{{ $pendingOrders }}</p>
                     </div>
-                    <div class="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center">
+                    <div class="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center">
                         <i class="fas fa-clock text-xl"></i>
                     </div>
                 </div>
             </div>
-            <div class="bg-gray-800 px-6 py-3">
-                <a href="#" class="flex justify-between items-center text-white hover:text-gray-300 text-sm font-medium">
+            <div class="bg-orange-700 px-6 py-3">
+                <a href="{{ route('orders.pending') }}" class="flex justify-between items-center text-white hover:text-orange-200 text-sm font-medium">
                     <span>View Details</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -109,7 +109,7 @@
         <!-- Bar Chart -->
         <div class="bg-white rounded-xl shadow-lg p-6">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-semibold text-gray-800">Statistical overview Bar Chart (Sample)</h3>
+                <h3 class="text-lg font-semibold text-gray-800">Sales Overview</h3>
                 <i class="fas fa-chart-bar text-gray-500 text-xl"></i>
             </div>
             <div class="h-80">
@@ -117,37 +117,14 @@
             </div>
         </div>
 
-        <!-- Area Chart -->
+        <!-- Doughnut Chart -->
         <div class="bg-white rounded-xl shadow-lg p-6">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-semibold text-gray-800">Statistical overview Area Chart (Sample)</h3>
-                <i class="fas fa-chart-area text-gray-500 text-xl"></i>
+                <h3 class="text-lg font-semibold text-gray-800">Inventory Distribution</h3>
+                <i class="fas fa-chart-pie text-gray-500 text-xl"></i>
             </div>
             <div class="h-80">
-                <canvas id="areaChart"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="bg-white rounded-xl shadow-lg p-6">
-        <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Overview</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="text-center p-4 bg-blue-50 rounded-lg">
-                <p class="text-2xl font-bold text-blue-600">12</p>
-                <p class="text-sm text-gray-600">Low Stock Items</p>
-            </div>
-            <div class="text-center p-4 bg-green-50 rounded-lg">
-                <p class="text-2xl font-bold text-green-600">45</p>
-                <p class="text-sm text-gray-600">This Month Sales</p>
-            </div>
-            <div class="text-center p-4 bg-yellow-50 rounded-lg">
-                <p class="text-2xl font-bold text-yellow-600">8</p>
-                <p class="text-sm text-gray-600">New Customers</p>
-            </div>
-            <div class="text-center p-4 bg-purple-50 rounded-lg">
-                <p class="text-2xl font-bold text-purple-600">92%</p>
-                <p class="text-sm text-gray-600">Order Accuracy</p>
+                <canvas id="doughnutChart"></canvas>
             </div>
         </div>
     </div>
@@ -155,7 +132,6 @@
 
 @section('scripts')
     <script>
-        // Initialize Charts when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Bar Chart
             const barCtx = document.getElementById('barChart').getContext('2d');
@@ -182,28 +158,35 @@
                 }
             });
 
-            // Area Chart
-            const areaCtx = document.getElementById('areaChart').getContext('2d');
-            new Chart(areaCtx, {
-                type: 'line',
+            // Doughnut Chart
+            const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+            new Chart(doughnutCtx, {
+                type: 'doughnut',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    labels: ['Total Stock', 'Sold Products', 'Available Products', 'Pending Orders'],
                     datasets: [{
-                        label: 'Inventory Value',
-                        data: [30, 45, 35, 50, 40, 60],
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        borderColor: 'rgb(16, 185, 129)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
+                        data: [{{ $totalStock }}, {{ $soldProducts }}, {{ $availableProducts }}, {{ $pendingOrders }}],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(249, 115, 22, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgb(59, 130, 246)',
+                            'rgb(16, 185, 129)',
+                            'rgb(245, 158, 11)',
+                            'rgb(249, 115, 22)'
+                        ],
+                        borderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
                         }
                     }
                 }

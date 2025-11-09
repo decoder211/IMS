@@ -50,7 +50,7 @@
                     </button>
                     <div class="flex items-center ml-4">
                         <i class="fas fa-boxes text-blue-400 text-xl mr-3"></i>
-                        <span class="text-xl font-bold">InventoryPro - Admin</span>
+                        <span class="text-xl font-bold">Inventory Management- Admin</span>
                     </div>
                 </div>
 
@@ -111,11 +111,11 @@
                             <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
                         </button>
                         <div id="adminSubmenu" class="ml-8 space-y-1 submenu-transition hidden">
-                            <a href="{{ url('/admin/categories/create') }}" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 text-sm">
-                                <i class="fas fa-plus w-4 text-center"></i>
-                                <span>Create Category</span>
+                            <a href="{{ route('categories.create') }}" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 text-sm">
+                                 <i class="fas fa-plus w-4 text-center"></i>
+                                 <span>Create Category</span>
                             </a>
-                            <a href="{{ url('/admin/categories') }}" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 text-sm">
+                            <a href="{{ route('categories.index') }}" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 text-sm">
                                 <i class="fas fa-list w-4 text-center"></i>
                                 <span>Manage Categories</span>
                             </a>
@@ -219,7 +219,7 @@
 
     <script>
         // Sidebar state management
-        let sidebarOpen = window.innerWidth >= 1024;
+        let sidebarOpen = false;
 
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
